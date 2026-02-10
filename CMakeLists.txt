@@ -18,26 +18,17 @@ endif()
 # Export compile_commands.json for VS Code / clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# -----------------------------
-# Raylib (vendored)
-# -----------------------------
-# raylib's CMakeLists.txt lives in its root.
-# It produces a target named "raylib".
-add_subdirectory(external/raylib)
+find_package(raylib CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
 
-# -----------------------------
-# Your executable
-# -----------------------------
 add_executable(audio_course
     src/main.cpp
 )
 
-# raygui is usually just a header. If you keep it at external/raygui/raygui.h:
-target_include_directories(audio_course PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/raygui
-)
-
 target_link_libraries(audio_course PRIVATE raylib)
+target_link_libraries(audio_course PRIVATE glfw)
+find_path(RAYGUI_INCLUDE_DIRS "raygui.h")
+target_include_directories(audio_course PRIVATE ${RAYGUI_INCLUDE_DIRS})
 
 # On some toolchains you may need these. Harmless if not.
 if(APPLE)
