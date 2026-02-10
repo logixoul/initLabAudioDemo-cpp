@@ -16,12 +16,6 @@ To build on Windows 11 (with WSL):
     cmake --preset=vcpkg
     cmake --build build
 
-To build on Windows (outdated info):
-1. Install cmake (get "Windows x64 Installer" from https://cmake.org/download/)
-2. Install "Build Tools for Visual Studio 2026" (https://aka.ms/vs/stable/vs_BuildTools.exe)
-3. In the project root, run:
-    cmake -G "Visual Studio 18 2026" -S . -B build
-    cmake --build build
 
 To setup VS Code for comfort:
 - install these extensions:
