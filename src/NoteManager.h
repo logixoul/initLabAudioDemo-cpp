@@ -3,20 +3,23 @@
 #include <map>
 #include <memory>
 #include "Note.h"
+#include "Oscillator.h"
+#include "AppOptions.h"
 
 namespace AudioDemo {
 
     class NoteManager {
         std::vector<NotePtr> activeNotes;
         std::map<int, NotePtr> noteInstanceThatIsCurrentlyPressed;
+        AppOptions* mOptions;
 
     public:
-        NoteManager() {
-            
+        NoteManager(AppOptions* options) {
+            mOptions = options;
         }
         void addNote(int noteIndex) {
             const float noteFreq = 440.0f * std::pow(2.0f, (noteIndex - 69) / 12.0f);
-            const auto osc = std::make_shared<SineOscillator>(noteFreq, nullptr);
+            const auto osc = std::make_shared<SineOscillator>(noteFreq, mOptions);
             NotePtr note = std::make_shared<Note>(osc, noteIndex);
             this->activeNotes.push_back(note);
             this->noteInstanceThatIsCurrentlyPressed[note->mNoteIndex] = note;
