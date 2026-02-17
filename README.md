@@ -3,7 +3,7 @@ To build on Windows 11 (with WSL):
     wsl --install Ubuntu
 2. Reboot.
 3. Start menu -> Ubuntu -> Run the following:
-    sudo apt install clang cmake ninja-build libc6-dev lld
+    sudo apt install clang cmake ninja-build libc6-dev lld gdb
     sudo apt install libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev pkg-config glfw # for glfw
     sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev
     cd ~
