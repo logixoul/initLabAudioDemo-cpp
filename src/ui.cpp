@@ -1,0 +1,43 @@
+#include "ui.h"
+
+namespace AudioDemo {
+
+const std::map<int, int> mapping = {
+    {KEY_Z, 0},
+    {KEY_S, 1},
+    {KEY_X, 2},
+    {KEY_D, 3},
+    {KEY_C, 4},
+    {KEY_V, 5},
+    {KEY_G, 6},
+    {KEY_B, 7},
+    {KEY_H, 8},
+    {KEY_N, 9},
+    {KEY_J, 10},
+    {KEY_M, 11},
+    {KEY_COMMA, 12},
+    {KEY_L, 13},
+    {KEY_PERIOD, 14},
+    {KEY_SEMICOLON, 15},
+    {KEY_SLASH, 16},
+    {KEY_Q, 12},
+    {KEY_TWO, 13},
+    {KEY_W, 14},
+    {KEY_THREE, 25},
+    {KEY_E, 26},
+    {KEY_R, 27},
+    {KEY_FIVE, 28},
+    {KEY_T, 29},
+    {KEY_SIX, 30},
+    {KEY_Y, 31},
+    {KEY_SEVEN, 32},
+    {KEY_U, 33},
+    {KEY_I, 34},
+    {KEY_NINE, 35},
+    {KEY_O, 36},
+    {KEY_ZERO, 37},
+    {KEY_P, 38},
+    {KEY_LEFT_BRACKET, 39},
+    {KEY_EQUAL, 40},
+    {KEY_RIGHT_BRACKET, 41}};
+}
