@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(audio_course
+project(initLabAudioDemo-cpp
     VERSION 0.1.0
     LANGUAGES C CXX
 )
@@ -21,25 +21,25 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(raylib CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 
-add_executable(audio_course
+add_executable(initLabAudioDemo-cpp
     src/main.cpp
 )
 
-target_link_libraries(audio_course PRIVATE raylib)
-target_link_libraries(audio_course PRIVATE glfw)
+target_link_libraries(initLabAudioDemo-cpp PRIVATE raylib)
+target_link_libraries(initLabAudioDemo-cpp PRIVATE glfw)
 find_path(RAYGUI_INCLUDE_DIRS "raygui.h")
-target_include_directories(audio_course PRIVATE ${RAYGUI_INCLUDE_DIRS})
+target_include_directories(initLabAudioDemo-cpp PRIVATE ${RAYGUI_INCLUDE_DIRS})
 
 # On some toolchains you may need these. Harmless if not.
 if(APPLE)
     # raylib already links the needed frameworks in most cases,
     # but keeping this here can help when toolchains differ.
-    target_compile_definitions(audio_course PRIVATE PLATFORM_DESKTOP)
+    target_compile_definitions(initLabAudioDemo-cpp PRIVATE PLATFORM_DESKTOP)
 endif()
 
 # Warnings (nice for teaching, but not overly strict)
 if(MSVC)
-    target_compile_options(audio_course PRIVATE /W4)
+    target_compile_options(initLabAudioDemo-cpp PRIVATE /W4)
 else()
-    target_compile_options(audio_course PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(initLabAudioDemo-cpp PRIVATE -Wall -Wextra -Wpedantic)
 endif()
