@@ -32,4 +32,6 @@ public:
             return this->_isFinished;
         }
     };
+
+    typedef std::shared_ptr<Note> NotePtr;
 }

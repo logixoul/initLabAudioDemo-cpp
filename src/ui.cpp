@@ -2,7 +2,7 @@
 
 namespace AudioDemo {
 
-const std::map<int, int> mapping = {
+std::map<int, int> mapping = {
     {KEY_Z, 0},
     {KEY_S, 1},
     {KEY_X, 2},

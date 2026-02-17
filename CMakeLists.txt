@@ -21,8 +21,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(raylib CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 
+file(GLOB SOURCES "src/*.cpp")
+
 add_executable(initLabAudioDemo-cpp
-    src/main.cpp
+    ${SOURCES}
 )
 
 target_link_libraries(initLabAudioDemo-cpp PRIVATE raylib)

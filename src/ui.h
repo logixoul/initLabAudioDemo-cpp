@@ -1,10 +1,11 @@
 #pragma once
 #include <raylib.h>
 #include <map>
+#include "NoteManager.h"
 
 namespace AudioDemo {
     extern std::map<int, int> mapping;
-    int keyCodeToNoteIndex(int keyCode)
+    inline int keyCodeToNoteIndex(int keyCode)
     {
         if (mapping.find(keyCode) != mapping.end())
         {

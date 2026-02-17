@@ -2,7 +2,6 @@
 #include "AudioAccess.h"
 #include "NoteManager.h"
 
-
 int main()
 {
     AudioDemo::NoteManager noteManager;
