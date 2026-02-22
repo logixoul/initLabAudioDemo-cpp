@@ -3,18 +3,17 @@ To build on Windows 11 (with WSL):
     wsl --install Ubuntu
 2. Reboot.
 3. Start menu -> Ubuntu -> Run the following:
-    sudo apt install clang cmake ninja-build libc6-dev lld gdb
-    sudo apt install libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev pkg-config # for glfw
+    sudo add-apt-repository ppa:xmake-io/xmake
+    sudo apt update
+    sudo apt install xmake
+
+    sudo apt install build-essential
+    # for glfw:
+    sudo apt install libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev pkg-config
     sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev
-    cd ~
-    git clone https://github.com/microsoft/vcpkg.git
-    cd vcpkg && ./bootstrap-vcpkg.sh
-4. Put this into your ~/.profile:
-    export VCPKG_ROOT=~/vcpkg
-    export PATH=$VCPKG_ROOT:$PATH
+    
 5. Run:
-    cmake --preset=vcpkg
-    cmake --build build
+    xmake build
 
 
 To setup VS Code for comfort:
