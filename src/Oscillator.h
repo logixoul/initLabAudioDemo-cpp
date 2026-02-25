@@ -26,8 +26,34 @@ namespace AudioDemo
 
         float nextSample() override
         {
-            float sample = std::sin(this->phase);
-            this->phase += (2 * M_PI * this->frequency) / this->appOptions->sampleRate;
+            float sample = std::sin(this->phase * 2 * M_PI);
+            this->phase += this->frequency / this->appOptions->sampleRate;
+            if (this->phase >= 1.0f)
+                this->phase -= 1.0f;
+            return sample;
+        }
+    };
+
+    class SquareOscillator : public Oscillator
+    {
+        float phase = 0;
+        float frequency;
+        AppOptions const *appOptions;
+
+    public:
+        SquareOscillator(float frequency, AppOptions const *appOptions)
+        {
+            this->frequency = frequency;
+            this->phase = 0;
+            this->appOptions = appOptions;
+        }
+
+        float nextSample() override
+        {
+            float sample = this->phase < .5 ? 1 : -1;
+            this->phase += this->frequency / this->appOptions->sampleRate;
+            if (this->phase >= 1.0f)
+                this->phase -= 1.0f;
             return sample;
         }
     };

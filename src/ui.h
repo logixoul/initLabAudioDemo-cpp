@@ -1,5 +1,6 @@
 #pragma once
 #include <raylib.h>
+#include <raygui.h>
 #include <map>
 #include "NoteManager.h"
 
@@ -31,12 +32,18 @@ namespace AudioDemo
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
                 DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+                produceUiElements();
                 EndDrawing();
 
                 mNoteManager->postMessage(NoteManager::UpdateMessage{});
             }
         }
     private:
+
+        void produceUiElements()
+        {
+            int oscTypeIndex = GuiDropdownBox((RECTANGLE){10, 10, 200, 20}, "Sine;Square", 0, false);
+        }
 
         void handleInput()
         {

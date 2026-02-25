@@ -50,7 +50,7 @@ namespace AudioDemo {
 
 
 
-        // overloaded operator() for usage with std::visit
+        // overloaded operator() for usage with std::visit - don't call manually.
         void operator()(NotePressedMessage const& msg) {
             addNote(msg.id);
         }

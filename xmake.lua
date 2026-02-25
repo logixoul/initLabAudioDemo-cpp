@@ -1,6 +1,7 @@
 add_rules("mode.debug", "mode.release")
 
 add_requires("raylib")
+add_requires("raygui")
 add_requires("readerwriterqueue")
 
 target("initLabAudioDemo")
