@@ -3,30 +3,28 @@
 #include <map>
 #include "NoteManager.h"
 
-namespace AudioDemo {
+namespace AudioDemo
+{
     extern std::map<int, int> mapping;
-    inline int keyCodeToNoteIndex(int keyCode)
-    {
-        if (mapping.find(keyCode) != mapping.end())
-        {
-            return mapping[keyCode] + 60;
-        }
-        return -1;
-    }
 
-    class Ui {
-        NoteManager* mNoteManager;
+    class Ui
+    {
+        NoteManager *mNoteManager;
+
     public:
-        Ui(NoteManager* noteManager) {
+        Ui(NoteManager *noteManager)
+        {
             mNoteManager = noteManager;
             InitWindow(800, 450, "init Lab audio demo");
         }
 
-        ~Ui() {
+        ~Ui()
+        {
             CloseWindow();
         }
 
-        void mainLoop() {
+        void mainLoop()
+        {
             while (!WindowShouldClose())
             {
                 handleInput();
@@ -34,25 +32,33 @@ namespace AudioDemo {
                 ClearBackground(RAYWHITE);
                 DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
                 EndDrawing();
+
+                mNoteManager->postMessage(NoteManager::UpdateMessage{});
             }
         }
+    private:
 
-        void handleInput() {
-            for(auto& pair : mapping) {
-                if (IsKeyPressed(pair.first)) {
+        void handleInput()
+        {
+            for (auto &pair : mapping)
+            {
+                if (IsKeyPressed(pair.first))
+                {
                     handleKeyPressed(pair.first);
                 }
-                if (IsKeyReleased(pair.first)) {
+                if (IsKeyReleased(pair.first))
+                {
                     handleKeyReleased(pair.first);
                 }
             }
         }
 
-        void handleKeyPressed(int key) {
+        void handleKeyPressed(int key)
+        {
             const int noteIndex = keyCodeToNoteIndex(key);
             if (noteIndex != -1)
             {
-                mNoteManager->addNote(noteIndex);
+                mNoteManager->postMessage(NoteManager::NotePressedMessage{noteIndex});
             }
         }
         void handleKeyReleased(int key)
@@ -60,8 +66,16 @@ namespace AudioDemo {
             const int noteIndex = keyCodeToNoteIndex(key);
             if (noteIndex != -1)
             {
-                mNoteManager->removeNote(noteIndex);
+                mNoteManager->postMessage(NoteManager::NoteReleasedMessage{noteIndex});
             }
+        }
+        int keyCodeToNoteIndex(int keyCode)
+        {
+            if (mapping.find(keyCode) != mapping.end())
+            {
+                return mapping[keyCode] + 60;
+            }
+            return -1;
         }
     };
 }

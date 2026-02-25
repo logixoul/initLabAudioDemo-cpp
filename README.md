@@ -19,6 +19,7 @@ To build on Windows 11 (with WSL):
 To setup VS Code for comfort:
 - install these extensions:
     ms-vscode-remote.remote-wsl   <--- if you're on Windows (WSL)
-    ms-vscode.cmake-tools
     ms-vscode.cpptools
+    # no need for the xmake extension, it's buggy and slow
 - then restart VSCode. It will prompt you to "Reopen in WSL" - click that.
+- You can now run the app via Ctrl+Shift+B

@@ -10,11 +10,11 @@ namespace AudioDemo {
         bool _isReleased = false;
         float volume;
 public:
-        int mNoteIndex;
-        Note(std::shared_ptr<Oscillator> oscillator, int noteIndex, float volume = 1)
+        int mNoteId; // e.g. 60 for middle C, 61 for middle C#, etc.
+        Note(std::shared_ptr<Oscillator> oscillator, int noteId, float volume = 1)
         {
             this->osc = oscillator;
-            this->mNoteIndex = noteIndex;
+            this->mNoteId = noteId;
             this->volume = volume;
         }
         void handleNoteRelease()
