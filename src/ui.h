@@ -1,6 +1,5 @@
 #pragma once
 #include <raylib.h>
-#include <raygui.h>
 #include <map>
 #include "NoteManager.h"
 
@@ -42,7 +41,7 @@ namespace AudioDemo
 
         void produceUiElements()
         {
-            int oscTypeIndex = GuiDropdownBox((RECTANGLE){10, 10, 200, 20}, "Sine;Square", 0, false);
+            //int oscTypeIndex = GuiDropdownBox((RECTANGLE){10, 10, 200, 20}, "Sine;Square", 0, false);
         }
 
         void handleInput()
